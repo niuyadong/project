@@ -87,7 +87,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .card-goods {
   padding: 10px 0;
   background-color: #fff;
