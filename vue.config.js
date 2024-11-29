@@ -4,6 +4,7 @@ const pxtorem = require("postcss-pxtorem");
 module.exports = {
   outputDir: "dist",
   publicPath: process.env.NODE_ENV === "production" ? "/vant-demo/" : "/",
+  // px转rem
   css: {
     loaderOptions: {
       postcss: {
@@ -16,6 +17,22 @@ module.exports = {
         ],
       },
     },
+  },
+  // 图片压缩
+  chainWebpack: config => {
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        // 配置项
+        mozjpeg: {
+          progressive: true,
+          quality: 65
+        },
+        // 其他配置...
+      })
+      .end();
   },
   // 跨域环境配置
   configureWebpack: (config) => {
