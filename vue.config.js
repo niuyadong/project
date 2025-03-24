@@ -2,6 +2,7 @@ const autoprefixer = require("autoprefixer");
 const pxtorem = require("postcss-pxtorem");
 
 module.exports = {
+  lintOnSave: false, // 禁用 ESLint
   outputDir: "dist",
   publicPath: process.env.NODE_ENV === "production" ? "/vant-demo/" : "/",
   // px转rem

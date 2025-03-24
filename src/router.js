@@ -35,7 +35,21 @@ const routes = [
     meta: {
       title: "demos",
     },
-  }
+  },
+  {
+    name: "calendar",
+    component: () => import("./view/demoPage/calendar.vue"),
+    meta: {
+      title: "calendar",
+    },
+  },
+  {
+    name: "Acalendar",
+    component: () => import("./view/demoPage/Acalendar.vue"),
+    meta: {
+      title: "Acalendar",
+    },
+  },
 ];
 
 // add route path
