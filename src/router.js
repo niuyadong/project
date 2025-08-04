@@ -4,30 +4,83 @@ import Router from "vue-router";
 Vue.use(Router);
 
 const routes = [
-  {
-    path: "*",
-    redirect: "/demos",
+  {    
+    path: "/login",
+    name: "login",
+    component: () => import("./view/login"),
+    meta: {
+      title: "用户登录",
+      requiresAuth: false
+    }
   },
-  {
+  {    
+    path: "/sms-login",
+    name: "sms-login",
+    component: () => import("./view/login/sms-login.vue"),
+    meta: {
+      title: "短信登录",
+      requiresAuth: false
+    }
+  },
+  {    
+    path: "/register",
+    name: "register",
+    component: () => import("./view/login/register.vue"),
+    meta: {
+      title: "用户注册",
+      requiresAuth: false
+    }
+  },
+  {    
+    path: "/forgot-password",
+    name: "forgot-password",
+    component: () => import("./view/login/forgot-password.vue"),
+    meta: {
+      title: "忘记密码",
+      requiresAuth: false
+    }
+  },
+  {    
+    path: "/",
+    redirect: "/login"
+  },
+  {    
+    path: "*",
+    redirect: "/login"
+  },
+  {    
     name: "user",
     component: () => import("./view/user"),
     meta: {
       title: "会员中心",
-    },
+      requiresAuth: true
+    }
   },
-  {
+  {    
     name: "cart",
     component: () => import("./view/cart"),
     meta: {
       title: "购物车",
-    },
+      requiresAuth: true
+    }
   },
-  {
+  {    
     name: "goods",
+    path: "/goods/:id",
     component: () => import("./view/goods"),
     meta: {
       title: "商品详情",
-    },
+      requiresAuth: true
+    }
+  },  
+  {    
+    name: "product-list",    
+    path: "/product-list",
+    component: () => import("./view/product-list"),   
+    meta: {      
+      title: "产品列表",
+      requiresAuth: true    
+    } 
   },
   {
     name: "demos",
@@ -67,6 +120,15 @@ router.beforeEach((to, from, next) => {
   if (title) {
     document.title = title;
   }
+  
+  // 登录验证逻辑
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const requiresAuth = to.meta.requiresAuth !== false;
+  
+  if (requiresAuth && !isLoggedIn) {
+    return next('/login');
+  }
+  
   next();
 });
 

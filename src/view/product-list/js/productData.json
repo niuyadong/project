@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Apple iPhone 14 Pro 256GB 星光色",
+    "desc": "A16仿生芯片，超视网膜XDR显示屏，专业级摄像头系统",
+    "price": 799900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg",
+    "category": "digital",
+    "sales": 12580,
+    "discount": 9.5
+  },
+  {
+    "id": 2,
+    "title": "华为MateBook X Pro 2023 i7 16G 1TB",
+    "desc": "13代酷睿处理器，3.1K原色全面屏，轻薄金属机身",
+    "price": 1299900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg",
+    "category": "digital",
+    "sales": 5320,
+    "discount": 9.0
+  },
+  {
+    "id": 3,
+    "title": "小米空气净化器4 Pro",
+    "desc": "H13级HEPA滤芯，500m³/h CADR值，智能控制",
+    "price": 129900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg",
+    "category": "appliance",
+    "sales": 8940,
+    "discount": 8.8
+  },
+  {
+    "id": 4,
+    "title": "耐克Air Jordan 1 高帮篮球鞋",
+    "desc": "经典设计，优质皮革鞋面，气垫缓震，耐磨橡胶外底",
+    "price": 129900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png",
+    "category": "clothing",
+    "sales": 15630,
+    "discount": 9.2
+  },
+  {
+    "id": 5,
+    "title": "三只松鼠坚果大礼包1500g",
+    "desc": "混合坚果礼盒，8种坚果果干，过节送礼佳品",
+    "price": 12900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg",
+    "category": "food",
+    "sales": 23560,
+    "discount": 7.5
+  },
+  {
+    "id": 6,
+    "title": "戴森V12 Detect Slim无线吸尘器",
+    "desc": "激光清洁技术，数字显示屏，高效过滤系统",
+    "price": 449000,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg",
+    "category": "appliance",
+    "sales": 3280,
+    "discount": 9.0
+  },
+  {
+    "id": 7,
+    "title": "三星Galaxy S23 Ultra 512GB",
+    "desc": "2亿像素摄像头，S Pen内置，Dynamic AMOLED 2X屏幕",
+    "price": 969900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg",
+    "category": "digital",
+    "sales": 4120,
+    "discount": 8.9
+  },
+  {
+    "id": 8,
+    "title": "优衣库男士保暖内衣套装",
+    "desc": "Heattech保暖科技，柔软亲肤，修身剪裁",
+    "price": 19900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png",
+    "category": "clothing",
+    "sales": 18750,
+    "discount": 8.5
+  },
+  {
+    "id": 9,
+    "title": "格力1.5匹变频冷暖空调",
+    "desc": "新一级能效，自清洁，静音运行，智能控制",
+    "price": 329900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg",
+    "category": "appliance",
+    "sales": 6430,
+    "discount": 9.3
+  },
+  {
+    "id": 10,
+    "title": "百草味每日坚果750g",
+    "desc": "30小包独立包装，混合坚果仁，营养早餐",
+    "price": 8900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg",
+    "category": "food",
+    "sales": 32450,
+    "discount": 8.0
+  },
+  {
+    "id": 11,
+    "title": "索尼WH-1000XM5无线降噪耳机",
+    "desc": "8麦克风系统，30小时续航，高解析度音频",
+    "price": 299900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg",
+    "category": "digital",
+    "sales": 2870,
+    "discount": 9.1
+  },
+  {
+    "id": 12,
+    "title": "李宁羽毛球拍双拍套装",
+    "desc": "全碳素纤维，超轻设计，送6个羽毛球",
+    "price": 25900,
+    "thumb": "https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png",
+    "category": "clothing",
+    "sales": 7530,
+    "discount": 8.7
+  }
+]

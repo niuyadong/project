@@ -1,10 +1,7 @@
 <template>
   <div class="login-container">
-    <!-- 账号密码登录界面 -->
     <div class="login-card">
-      <div class="login-title">
-        用户登录
-      </div>
+      <div class="login-title">用户注册</div>
       <div class="login-form">
         <van-cell-group>
           <van-field
@@ -17,6 +14,15 @@
             @blur="focusState.username = false"
           />
           <van-field
+            v-model="email"
+            name="email"
+            label="邮箱"
+            placeholder="请输入邮箱"
+            :class="{ 'input-focus': focusState.email }"
+            @focus="focusState.email = true"
+            @blur="focusState.email = false"
+          />
+          <van-field
             v-model="password"
             type="password"
             name="password"
@@ -26,89 +32,73 @@
             @focus="focusState.password = true"
             @blur="focusState.password = false"
           />
+          <van-field
+            v-model="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            label="确认密码"
+            placeholder="请确认密码"
+            :class="{ 'input-focus': focusState.confirmPassword }"
+            @focus="focusState.confirmPassword = true"
+            @blur="focusState.confirmPassword = false"
+          />
         </van-cell-group>
         <div class="login-actions">
           <van-button type="primary" :loading="loading" class="login-btn" @click="onSubmit">
-            登录
+            注册
           </van-button>
-        </div>
-        <div class="quick-login">
-          <div class="quick-login-title">其他登录方式</div>
-          <div class="quick-login-options">
-            <div class="quick-login-item" @click="smsLogin">
-              <van-icon name="message-square" class="icon" />
-              <span>手机短信登录</span>
-            </div>
-            <div class="quick-login-item" @click="wechatLogin">
-              <van-icon name="wechat" class="icon" />
-              <span>微信登录</span>
-            </div>
-            <div class="quick-login-item" @click="qqLogin">
-              <van-icon name="qq" class="icon" />
-              <span>QQ登录</span>
-            </div>
-            <div class="quick-login-item" @click="appleLogin">
-              <van-icon name="apple" class="icon" />
-              <span>苹果账号登录</span>
-            </div>
-          </div>
         </div>
       </div>
       <div class="login-links">
-        <router-link to="/register" class="link-item">注册账号</router-link>
-        <router-link to="/forgot-password" class="link-item">忘记密码</router-link>
+        <router-link to="/login" class="link-item">返回登录</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { CellGroup, Field, Button, Toast, Icon } from 'vant';
+import { CellGroup, Field, Button, Toast } from 'vant';
 
 export default {
   components: {
     [CellGroup.name]: CellGroup,
     [Field.name]: Field,
     [Button.name]: Button,
-    [Toast.name]: Toast,
-    [Icon.name]: Icon
+    [Toast.name]: Toast
   },
   data() {
     return {
       username: '',
+      email: '',
       password: '',
+      confirmPassword: '',
       loading: false,
       focusState: {
         username: false,
-        password: false
+        email: false,
+        password: false,
+        confirmPassword: false
       }
     };
   },
   methods: {
     onSubmit() {
+      if (!this.username || !this.email || !this.password || !this.confirmPassword) {
+        Toast.fail('请填写所有字段');
+        return;
+      }
+
+      if (this.password !== this.confirmPassword) {
+        Toast.fail('两次密码输入不一致');
+        return;
+      }
+
       this.loading = true;
       setTimeout(() => {
-        if (this.username === 'admin' && this.password === '123456') {
-          Toast.success('登录成功');
-          localStorage.setItem('isLoggedIn', 'true');
-          this.$router.push('/product-list');
-        } else {
-          Toast.fail('用户名或密码错误');
-        }
+        Toast.success('注册成功');
+        this.$router.push('/login');
         this.loading = false;
       }, 1000);
-    },
-    smsLogin() {
-      this.$router.push('/sms-login');
-    },
-    wechatLogin() {
-      Toast('微信登录功能开发中');
-    },
-    qqLogin() {
-      Toast('QQ登录功能开发中');
-    },
-    appleLogin() {
-      Toast('苹果账号登录功能开发中');
     }
   }
 };
@@ -123,7 +113,6 @@ export default {
   align-items: center;
   padding: 20px;
   animation: bgAnimation 15s ease infinite;
-  position: relative;
 }
 
 .login-card {
@@ -199,91 +188,9 @@ export default {
   box-shadow: 0 5px 15px rgba(66, 185, 131, 0.3);
 }
 
-.quick-login {
-  margin: 30px 0;
-}
-
-.quick-login-title {
-  text-align: center;
-  color: #999;
-  font-size: 14px;
-  margin-bottom: 15px;
-  position: relative;
-}
-
-.quick-login-title::before, .quick-login-title::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 35%;
-  height: 1px;
-  background: #eee;
-}
-
-.quick-login-title::before {
-  left: 0;
-}
-
-.quick-login-title::after {
-  right: 0;
-}
-
-.quick-login-options {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.quick-login-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.quick-login-item:hover {
-  transform: translateY(-3px);
-}
-
-.icon {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 50%;
-  margin-bottom: 8px;
-  font-size: 24px;
-}
-
-.quick-login-item:nth-child(1) .icon {
-  background: #e8f4ff;
-  color: #1989fa;
-}
-
-.quick-login-item:nth-child(2) .icon {
-  background: #e7f7ee;
-  color: #07c160;
-}
-
-.quick-login-item:nth-child(3) .icon {
-  background: #e8f4ff;
-  color: #1da1f2;
-}
-
-.quick-login-item:nth-child(4) .icon {
-  background: #f5f5f5;
-  color: #333;
-}
-
-.quick-login-item span {
-  font-size: 12px;
-  color: #666;
-}
-
 .login-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 20px;
   padding: 0 10px;
 }
