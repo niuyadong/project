@@ -57,14 +57,13 @@
 </template>
 
 <script>
-import { CellGroup, Field, Button, Toast } from 'vant';
+import { CellGroup, Field, Button } from 'vant';
 
 export default {
   components: {
     [CellGroup.name]: CellGroup,
     [Field.name]: Field,
-    [Button.name]: Button,
-    [Toast.name]: Toast
+    [Button.name]: Button
   },
   data() {
     return {
@@ -84,18 +83,18 @@ export default {
   methods: {
     onSubmit() {
       if (!this.username || !this.email || !this.password || !this.confirmPassword) {
-        Toast.fail('请填写所有字段');
+        this.$toast.fail('请填写所有字段');
         return;
       }
 
       if (this.password !== this.confirmPassword) {
-        Toast.fail('两次密码输入不一致');
+        this.$toast.fail('两次密码输入不一致');
         return;
       }
 
       this.loading = true;
       setTimeout(() => {
-        Toast.success('注册成功');
+        this.$toast.success('注册成功');
         this.$router.push('/login');
         this.loading = false;
       }, 1000);

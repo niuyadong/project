@@ -42,21 +42,19 @@ const routes = [
   },
   {    
     path: "/",
-    redirect: "/login"
+    redirect: "/home"
   },
   {    
-    path: "*",
-    redirect: "/login"
-  },
-  {    
-    name: "user",
-    component: () => import("./view/user"),
+    path: "/home",
+    name: "home",
+    component: () => import("./view/home/Home.vue"),
     meta: {
-      title: "会员中心",
+      title: "首页",
       requiresAuth: true
     }
   },
   {    
+    path: "/cart",
     name: "cart",
     component: () => import("./view/cart"),
     meta: {
@@ -65,8 +63,44 @@ const routes = [
     }
   },
   {    
-    name: "goods",
+    path: "/cart/checkout",
+    name: "checkout",
+    component: () => import("./view/cart/checkout.vue"),
+    meta: {
+      title: "确认订单",
+      requiresAuth: true
+    }
+  },
+  {    
+    path: "/order/success",
+    name: "order-success",
+    component: () => import("./view/order/success.vue"),
+    meta: {
+      title: "订单提交成功",
+      requiresAuth: true
+    }
+  },
+  {    
+    path: "/address/edit",
+    name: "address-edit",
+    component: () => import("./view/address/edit.vue"),
+    meta: {
+      title: "编辑地址",
+      requiresAuth: true
+    }
+  },
+  {    
+    path: "/coupons",
+    name: "coupons",
+    component: () => import("./view/coupons.vue"),
+    meta: {
+      title: "选择优惠券",
+      requiresAuth: true
+    }
+  },
+  {    
     path: "/goods/:id",
+    name: "goods",
     component: () => import("./view/goods"),
     meta: {
       title: "商品详情",
@@ -74,35 +108,27 @@ const routes = [
     }
   },  
   {    
-    name: "product-list",    
     path: "/product-list",
+    name: "product-list",    
     component: () => import("./view/product-list"),   
     meta: {      
       title: "产品列表",
       requiresAuth: true    
     } 
   },
-  {
-    name: "demos",
-    component: () => import("./view/demoPage"),
+  {    
+    name: "user",
+    path: "/user",
+    component: () => import("./view/user"),
     meta: {
-      title: "demos",
-    },
+      title: "会员中心",
+      requiresAuth: true
+    }
   },
-  {
-    name: "calendar",
-    component: () => import("./view/demoPage/calendar.vue"),
-    meta: {
-      title: "calendar",
-    },
-  },
-  {
-    name: "Acalendar",
-    component: () => import("./view/demoPage/Acalendar.vue"),
-    meta: {
-      title: "Acalendar",
-    },
-  },
+  {    
+    path: "*",
+    redirect: "/home"
+  }
 ];
 
 // add route path

@@ -67,36 +67,10 @@
 </template>
 
 <script>
-import {
-  Tag,
-  Col,
-  Icon,
-  Cell,
-  CellGroup,
-  Swipe,
-  Toast,
-  SwipeItem,
-  GoodsAction,
-  GoodsActionIcon,
-  GoodsActionButton,
-} from "vant";
 // import api from "../../utils/api";
 import productData from '../product-list/js/productData.json';
-import { ImagePreview } from 'vant';
-export default {
-  components: {
-    [Tag.name]: Tag,
-    [Col.name]: Col,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [GoodsAction.name]: GoodsAction,
-    [GoodsActionIcon.name]: GoodsActionIcon,
-    [GoodsActionButton.name]: GoodsActionButton,
-  },
 
+export default {
   data() {
     return {
       goods: {},
@@ -113,7 +87,7 @@ export default {
       this.goods = product;
       this.activeImage = Array.isArray(product.thumb) ? product.thumb[0] : product.thumb;
     } else {
-      Toast('产品不存在');
+      this.$toast('产品不存在');
       this.$router.push('/product-list');
     }
   },
@@ -175,11 +149,12 @@ export default {
     },
 
     handleImageClick(images, index) {
-      ImagePreview({ images, startPosition: index });
+      // 使用this.$ImagePreview代替直接引入
+      this.$ImagePreview({ images, startPosition: index });
     },
 
     sorry() {
-      Toast("暂无后续逻辑~");
+      this.$toast("暂无后续逻辑~");
     },
   },
 };

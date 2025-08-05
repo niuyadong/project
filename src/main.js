@@ -1,18 +1,23 @@
-import Vue from "vue";
-import App from "./App";
-import store from "./store"; // 引入 store
-import axios from "./utils/axios"; // 引入配置好的 axios 实例
-import { router } from "./router";
+import Vue from 'vue';
+import App from './App.vue';
+import { router } from './router';
+import store from './store';
+import axios from 'axios';
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
-Vue.config.productionTip = false;
+import Vant from 'vant/lib/index.js';
+import 'vant/lib/index.css';
+import './assets/global.css';
 
 Vue.use(Antd);
-// 将 axios 挂载到 Vue 原型上
+Vue.use(Vant);
+
 Vue.prototype.$axios = axios;
+
+Vue.config.productionTip = false;
+
 new Vue({
-	router,
-	store,
-	el: "#app",
-	render: (h) => h(App),
-});
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app');

@@ -1,8 +1,39 @@
 <template>
 	<div id="app">
 		<router-view />
+		<!-- 底部导航 (排除登录页面) -->
+		<van-tabbar v-model="active" route v-if="!isLoginPage">
+			<van-tabbar-item to="/home" icon="home-o" text="首页" />
+			<!-- <van-tabbar-item to="/product-list" icon="list-switch" text="产品列表" /> -->
+			<van-tabbar-item to="/cart" icon="shopping-cart-o" text="购物车" />
+			<van-tabbar-item to="/user" icon="user-o" text="我的" />
+		</van-tabbar>
 	</div>
 </template>
+
+<script>
+// 虽然配置了babel-plugin-import自动引入，但为确保Tabbar组件正确注册，这里显式引入
+import { Tabbar, TabbarItem } from 'vant';
+
+export default {
+	components: {
+		[Tabbar.name]: Tabbar,
+		[TabbarItem.name]: TabbarItem
+	},
+	data() {
+		return {
+			active: 0
+		}
+	},
+	computed: {
+		isLoginPage() {
+			// 排除登录相关页面
+			const loginPaths = ['/login', '/sms-login', '/register', '/forgot-password'];
+			return loginPaths.includes(this.$route.path);
+		}
+	}
+}
+</script>
 
 <style>
 body {

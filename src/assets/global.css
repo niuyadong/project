@@ -1,0 +1,14 @@
+/* 全局隐藏滚动轴 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 针对Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* 针对IE和Edge */
+body {
+  -ms-overflow-style: none;
+}

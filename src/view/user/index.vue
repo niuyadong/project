@@ -36,16 +36,17 @@
 </template>
 
 <script>
-import { Row, Col, Icon, Cell, CellGroup } from "vant";
+// 显式引入并注册Vant组件
+import { Row, Col, Icon, CellGroup, Cell } from 'vant';
 
 export default {
   components: {
     [Row.name]: Row,
     [Col.name]: Col,
     [Icon.name]: Icon,
-    [Cell.name]: Cell,
     [CellGroup.name]: CellGroup,
-  },
+    [Cell.name]: Cell
+  }
 };
 </script>
 

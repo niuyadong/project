@@ -44,21 +44,9 @@
 </template>
 
 <script>
-import { Search, DropdownMenu, DropdownItem, List, Grid, GridItem, Card, Tag, Toast } from 'vant';
 import productData from './js/productData.json';
 
 export default {
-
-  components: {
-    [Search.name]: Search,
-    [DropdownMenu.name]: DropdownMenu,
-    [DropdownItem.name]: DropdownItem,
-    [List.name]: List,
-    [Grid.name]: Grid,
-    [GridItem.name]: GridItem,
-    [Card.name]: Card,
-    [Tag.name]: Tag
-  },
   data() {
     return {
       searchValue: '',
@@ -153,13 +141,12 @@ export default {
     },
     resetList() {
       this.page = 1;
-      this.finished = false;
       this.productList = [];
+      this.finished = false;
       this.loadProductList();
     },
     gotoDetail(id) {
-      this.$router.push({ name: 'goods', params: { id } });
-      Toast(`查看商品ID: ${id} 的详情`);
+      this.$router.push(`/goods/${id}`);
     }
   }
 };
@@ -168,60 +155,34 @@ export default {
 <style lang="less" scoped>
 .product-list {
   padding-bottom: 50px;
-  @media (max-width: 768px) {
-    // .filter-bar {
-    //   padding: 0 10px;
-    // }
-    .product-grid {
-        padding: 5px;
-      }
-      .product-card {
-        max-width: 330px;
-        .van-card__title {
-          font-size: 13px;
-        }
-        .van-card__desc {
-          font-size: 14px;
-        }
-        .van-card__thumb img {
-          height: 160px;
-        }
-      }
-  }
 
   .search-bar {
-    padding: 10px;
-    background-color: #f5f5f5;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 10;
   }
+
   .filter-bar {
-    border-bottom: 1px solid #eee;
-    position: sticky;
+    position: fixed;
     top: 44px;
+    left: 0;
+    width: 100%;
     z-index: 10;
     background-color: #fff;
   }
 
-  
-
   .product-grid {
-    padding: 10px;
+    margin-top: 90px;
+    padding: 0 10px;
   }
 
   .product-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     .van-card__thumb {
-      padding: 10px;
-      background-color: #f8f8f8;
-      img {
-        width: 100%;
-        height: 120px;
-        object-fit: contain;
-      }
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
     }
     .van-card__content {
       flex: 1;

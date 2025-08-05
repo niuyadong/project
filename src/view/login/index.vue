@@ -63,14 +63,14 @@
 </template>
 
 <script>
-import { CellGroup, Field, Button, Toast, Icon } from 'vant';
+// 显式引入并注册Vant组件
+import { CellGroup, Field, Button, Icon, Toast } from 'vant';
 
 export default {
   components: {
     [CellGroup.name]: CellGroup,
     [Field.name]: Field,
     [Button.name]: Button,
-    [Toast.name]: Toast,
     [Icon.name]: Icon
   },
   data() {
@@ -91,7 +91,7 @@ export default {
         if (this.username === 'admin' && this.password === '123456') {
           Toast.success('登录成功');
           localStorage.setItem('isLoggedIn', 'true');
-          this.$router.push('/product-list');
+          this.$router.push('/home');
         } else {
           Toast.fail('用户名或密码错误');
         }
